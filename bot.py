@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 from datetime import datetime
-
 import os
 
 TOKEN = os.getenv("DISCORD_TOKEN")
@@ -9,7 +8,10 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 # Your channel ID
 TARGET_CHANNEL_ID = 1394026213747593236
 
-intents = discord.Intents.all()
+# Only enable the intents we actually need
+intents = discord.Intents.default()
+intents.message_content = True
+intents.members = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
